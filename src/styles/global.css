@@ -1,5 +1,6 @@
+@import "./fonts.css";
 @import "tailwindcss";
-@plugin "daisyui";
+@import "./theme.css";
 
 @layer base {
     html {

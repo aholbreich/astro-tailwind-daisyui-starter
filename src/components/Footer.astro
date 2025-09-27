@@ -1,5 +1,6 @@
 ---
 import  {featureFlags}  from '@lib/config';
+import Mindstorm from './elements/Mindstorm.astro';
 
 ---
 
@@ -14,9 +15,5 @@ import  {featureFlags}  from '@lib/config';
 
     <span class="block sm:inline"> Copyright © {new Date().getFullYear()} My company.</span>
   </p>
-  
-  <p class="text-center text-xs text-slate-500 mt-1">
-    Made by <a href="https://mindstorm.digital"  class="hover:underline hover:text-primary-light"> Mindstorm Digital
-    </a> 
-  </p>
+  <Mindstorm />
 </footer>

@@ -8,7 +8,6 @@ Usage of Alpine is limited ans explicit, so it's easy to replace or remove.
 
 For Preinstalled Java Scripts see:
 
-* A child starter + Alpine.js [astrostart_TDA](https://github.com/aholbreich/astrostart_TDA)
 * A child starter + Vue.js [astro_start_daisyui_vue](https://github.com/aholbreich/astro_start_daisyui_vue)
 
 

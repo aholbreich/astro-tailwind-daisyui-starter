@@ -3,7 +3,8 @@
 * **T**ailwind
 * **D**aisyUI
 
-A minimalistic Astro project starter that includes Astro 5, Tailwind 4 with DaisyUI 5. No Java Script is preinstalled.
+A minimalistic Astro project starter that includes Astro 5, Tailwind 4 with DaisyUI 5 and minimalistic AlpineJS.
+Usage of Alpine is limited ans explicit, so it's easy to replace or remove.
 
 For Preinstalled Java Scripts see:
 
@@ -16,6 +17,8 @@ Also, it includes a few example components or project configuration.
 
 
 [Live Demo](https://astro-start-tailwind.vercel.app/)
+
+Hey, and if you don't like the design - there is not much design yet ;) This repo is not about design.
 
 ## Usage
 ### 1. Start you project using this template
@@ -69,6 +72,7 @@ pnpm dlx serve dist
 - Tailwind CSS 4
 - DaisyUI 5.1
 - Netlify
+- Alpine JS 3
 
 ## Configuration & Customization
 

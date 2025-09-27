@@ -11,3 +11,20 @@ export const featureFlags = {
   enableImprint: true,
   enableDataprotection: false,
 };
+
+// Navigation menu items
+export const nav = [
+  {
+    text: "Home",
+    url: "/",
+  },
+  {
+    text: "Daisyui",
+    url: "/saisyui/",
+  },
+  {
+    text: "404",
+    url: "/404/",
+  },
+  
+];

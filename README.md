@@ -18,7 +18,7 @@ Also, it includes a few example components or project configuration.
 [Live Demo](https://astro-start-tailwind.vercel.app/)
 
 ## Usage
-
+### 1. Start you project using this template
 Bootstrap your new project using this template with:
 
 ```bash
@@ -27,6 +27,17 @@ pnpm create astro@latest --template aholbreich/astrostart_TD
 
 Alternatively clone this repo and just start coding. The following commands should be helpful:
 
+### 2. Make it run locally
+
+`pnpm install`
+`pnpm dev` 
+
+Navigate to the browser and make sure you see some first components
+
+### 3. Adapt
+
+1. Start with `site-config.ts` and see how its affect the results
+2. Add new pages, components, change whatever you like 
 
 ### Commands
 

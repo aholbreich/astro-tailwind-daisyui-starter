@@ -4,7 +4,7 @@ import { nav } from "site-config";
 
 ---
 
-<nav x-data="{ open: false }" class="navbar max-w-screen-lx mx-auto">
+<nav x-data="{ open: false }" class="navbar max-w-screen-xl mx-auto">
   <div class="navbar-start md:pl-2 lg:pl-8">
     {
       /* Logo */
@@ -13,7 +13,7 @@ import { nav } from "site-config";
   <div class="navbar-center"></div>
   <div class="navbar-end md:pr-2 lg:pr-8">
     {
-      nav.map((nav, index) => (
+      nav.map((nav) => (
         <a class="hidden md:inline-flex btn btn-lg btn-ghost hover:bg-base-200" href={nav.url}>
           {nav.text}
         </a>
@@ -38,7 +38,7 @@ import { nav } from "site-config";
       <!-- Close Button -->
       <button @click="open = false" class="absolute top-6 right-6 text-4xl focus:outline-none" aria-label="Menü schließen"> &times; </button>
       {
-        nav.map((nav, index) => (
+        nav.map((nav) => (
           <a href={nav.url} class="text-2xl text-primary-content hover:text-accent" @click="open = false">
             {nav.text}
           </a>

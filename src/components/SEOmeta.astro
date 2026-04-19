@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { siteConfig } from "site-config";
 
 export interface Props {
   title?: string;
@@ -8,18 +9,18 @@ export interface Props {
   canonical?: string;
 }
 
-const { title = "Change Me! ", description, image, canonical } = Astro.props;
+const { title = siteConfig.title, description, image, canonical } = Astro.props;
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const resolvedImage = image ?? new URL("/opengraph.jpg", Astro.site).toString();
 ---
 
 <SEO
   title={title}
-  description={description ?? "Your company Default description"}
+  description={description ?? siteConfig.description}
   canonical={canonicalURL}
   twitter={{
-    creator: "@mindstormdigital",
-    site: "https://mindstorm.digital",
+    creator: siteConfig.seo.twitterHandle,
+    site: siteConfig.seo.twitterSite,
     card: "summary_large_image",
   }}
   openGraph={{

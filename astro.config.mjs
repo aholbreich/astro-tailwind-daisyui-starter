@@ -11,7 +11,7 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://example.com", // TODO: replace with your production URL (required for sitemap + SEO)
   trailingSlash: "never",
   integrations: [mdx(), sitemap(), icon(), alpinejs()],
   adapter: netlify(),

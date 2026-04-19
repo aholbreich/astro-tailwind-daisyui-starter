@@ -2,5 +2,12 @@
 node_modules
 dist
 
-# Local Netlify folder
+# Adapter/platform build state
 .netlify
+.wrangler
+.vercel
+
+# Environment variables
+.env
+.env.local
+.env.*.local

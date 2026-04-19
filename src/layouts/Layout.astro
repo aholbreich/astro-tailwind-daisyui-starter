@@ -28,11 +28,11 @@ const { title = siteConfig.title, description, image } = Astro.props;
     <SEOmeta title={title} description={description} image={image} />
   
   </head>
-</html>
-<body>
+  <body>
   <Navbar />
   <main>
     <slot />
   </main>
   <Footer />
-</body>
+  </body>
+</html>

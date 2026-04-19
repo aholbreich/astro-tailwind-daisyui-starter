@@ -20,7 +20,7 @@ export const nav = [
   },
   {
     text: "Daisyui",
-    url: "/saisyui/",
+    url: "/daisyui/",
   },
   {
     text: "404",

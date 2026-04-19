@@ -1,8 +1,8 @@
 {
-  "name": "astro_start_tailwind",
-  "homepage": "https://github.com/aholbreich/astro_start_tailwind",
+  "name": "astro-tailwind-daisyui-starter",
+  "homepage": "https://github.com/aholbreich/astro-tailwind-daisyui-starter",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

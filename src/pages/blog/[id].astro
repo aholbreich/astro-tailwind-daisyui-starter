@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+
+// getStaticPaths() tells Astro which URLs to generate at build time.
+// One page is built per non-draft blog post.
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post: CollectionEntry<'blog'>) => ({ params: { id: post.id }, props: { post } }));
+}
+
+// Explicit props interface — CollectionEntry<'blog'> is the fully-typed
+// entry shape generated from the schema in src/content.config.ts.
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="container mx-auto px-4 py-12 max-w-3xl">
+
+    <header class="mb-10">
+      <a href="/blog" class="link link-hover text-sm text-base-content/60">← All posts</a>
+      <h1 class="text-4xl font-bold mt-4 mb-2">{post.data.title}</h1>
+      <p class="text-base-content/60 text-sm">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        {post.data.updatedDate && (
+          <span>
+            · Updated <time datetime={post.data.updatedDate.toISOString()}>
+              {post.data.updatedDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </span>
+        )}
+      </p>
+    </header>
+
+    <!-- prose classes (Tailwind Typography) give Markdown output readable styles.
+         Remove this plugin if you prefer to style headings/paragraphs manually. -->
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
+
+  </article>
+</Layout>

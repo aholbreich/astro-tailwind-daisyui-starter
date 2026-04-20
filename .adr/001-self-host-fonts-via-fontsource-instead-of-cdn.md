@@ -1,4 +1,4 @@
-# 2. Self-host fonts via Fontsource instead of CDN
+# 1. Self-host fonts via Fontsource instead of CDN
 
 Status: Accepted
 Status Date: 2026-04-20

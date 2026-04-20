@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { nav } from "site-config";
+import ThemeToggle from "@components/ThemeToggle.astro";
 
 ---
 
@@ -19,6 +20,8 @@ import { nav } from "site-config";
         </a>
       ))
     }
+
+    <ThemeToggle />
 
     <button @click="open = !open" class="btn btn-square btn-ghost md:hidden" aria-label="Menü öffnen">
       <Icon name="nav" />

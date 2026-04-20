@@ -1,1 +1,23 @@
-/** Put your Font declarations here */
+/*
+ * Web fonts
+ *
+ * Inter Variable is loaded from the @fontsource-variable/inter npm package —
+ * no external requests at runtime, GDPR-friendly, works offline.
+ *
+ * To swap fonts:
+ *   pnpm remove @fontsource-variable/inter
+ *   pnpm add @fontsource-variable/<your-font>   (browse: fontsource.org)
+ *   Update the @import path and font-family below.
+ *
+ * Note: Astro 6 introduces a first-class `fonts` config API in astro.config.mjs
+ * (supporting Google, Bunny, local, and more) that will replace this approach.
+ * Upgrade path: https://docs.astro.build/en/guides/fonts/
+ */
+
+@import '@fontsource-variable/inter';
+
+@layer base {
+  body {
+    font-family: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  }
+}

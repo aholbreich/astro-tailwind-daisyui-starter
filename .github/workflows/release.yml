@@ -1,0 +1,64 @@
+name: Release
+
+# Triggered by pushing a version tag, e.g.: git tag v0.4.0 && git push --tags
+# This workflow:
+#   1. Syncs package.json "version" to match the git tag (single source of truth)
+#   2. Creates a GitHub Release with auto-generated release notes
+#
+# Recommended release flow:
+#   pnpm version patch|minor|major   ← bumps package.json AND creates the tag
+#   git push && git push --tags      ← triggers this workflow
+#
+# Or manually:
+#   git tag v0.4.0 && git push --tags
+#   Then manually bump package.json here or let this workflow do it.
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write   # needed to commit the version bump and create the release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Fetch the full history so we can push a commit back.
+          fetch-depth: 0
+          # Use a token that allows pushing commits to protected branches.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Sync package.json version to tag
+        run: |
+          # Strip leading "v" from the tag name (v0.4.0 → 0.4.0)
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "Setting package.json version to $VERSION"
+          # pnpm version --no-git-tag-version updates package.json without
+          # creating another tag (the tag already exists from the push).
+          pnpm version "$VERSION" --no-git-tag-version
+          # Commit only if there was a change (tag and package.json were out of sync)
+          if ! git diff --quiet package.json; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add package.json pnpm-lock.yaml
+            git commit -m "chore: sync version to $GITHUB_REF_NAME"
+            git push origin HEAD:main
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true

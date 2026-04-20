@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Navbar from "@components/nav/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import { siteConfig } from "site-config";
@@ -26,13 +27,39 @@ const { title = siteConfig.title, description, image } = Astro.props;
     <meta name="generator" content={Astro.generator} />
 
     <SEOmeta title={title} description={description} image={image} />
-  
+
+    <!--
+      View Transitions — enables animated, SPA-like page navigation.
+      Remove <ClientRouter /> to revert to standard full-page navigation.
+      Docs: https://docs.astro.build/en/guides/view-transitions/
+    -->
+    <ClientRouter />
+
+    <!--
+      Theme init — must run before Alpine boots and before first paint to
+      prevent a flash of the wrong theme. Reads localStorage, then falls back
+      to the OS color-scheme preference, then defaults to 'light'.
+      is:inline keeps this script un-bundled so it executes immediately.
+    -->
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
   </head>
   <body>
-  <Navbar />
-  <main>
-    <slot />
-  </main>
-  <Footer />
+    <!-- Skip-to-content: first focusable element on the page.
+         Hidden until keyboard-focused so sighted users never see it.
+         Screen readers and keyboard users tab to it and jump past the nav. -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <Navbar />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

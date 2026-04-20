@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "remove:daisyui": "node scripts/remove.mjs --daisyui",
+    "remove:alpine": "node scripts/remove.mjs --alpine"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.5.0",

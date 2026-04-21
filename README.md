@@ -4,6 +4,21 @@
 
 [Live Demo](https://astro-start-tailwind.vercel.app/) · [Report a bug](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=bug_report.md) · [Request a feature](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=feature_request.md)
 
+## Quickstart
+
+```bash
+pnpm create astro@latest --template aholbreich/astro-tailwind-daisyui-starter
+```
+
+Or clone directly:
+
+```bash
+git clone https://github.com/aholbreich/astro-tailwind-daisyui-starter.git my-project
+cd my-project
+pnpm install
+pnpm dev
+```
+
 ## What this is
 
 This repository is a production-ready Astro starter.
@@ -21,7 +36,7 @@ It keeps the stack focused on purpose:
 
 The goal is simple: start quickly, keep control, and ship without unnecessary setup friction.
 
-## Choose this if
+### Choose this if
 
 - You want a clean Astro starter with strong defaults instead of a blank repo.
 - You want DaisyUI included on purpose.
@@ -29,11 +44,10 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 - You want example pages and components that are easy to delete.
 - You want something production-usable immediately without becoming a large scaffolding system.
 
-## Skip this if
+### Skip this if
 
 - You want a theme, landing page kit, or large component gallery.
 - You want a generator with many install-time choices.
-- You want React, Vue, or Svelte in the default stack.
 - You want auth, database, API, CMS, or app-style state management included from the start.
 
 ## Included
@@ -61,21 +75,6 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 - Analytics or tracking
 - Multiple UI frameworks
 - A heavy component library beyond DaisyUI
-
-## Quickstart
-
-```bash
-pnpm create astro@latest --template aholbreich/astro-tailwind-daisyui-starter
-```
-
-Or clone directly:
-
-```bash
-git clone https://github.com/aholbreich/astro-tailwind-daisyui-starter.git my-project
-cd my-project
-pnpm install
-pnpm dev
-```
 
 ## Commands
 

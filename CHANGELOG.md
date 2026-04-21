@@ -9,7 +9,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Changed
+
 - Removed the Netlify adapter from the default static starter so deployment starts adapter-free unless a project explicitly needs one
+- Added typed Astro env validation for the public site URL and Twitter handle, then reused those values in the starter site config
 - Switched the starter font setup to Astro 6's local fonts API flow and documented how Astro config, `<Font />`, Tailwind, and DaisyUI fit together
 - Upgraded the starter to Astro 6 and refreshed repo docs, comments, and sample content to match the current Astro release
 - README rewritten around the repository's core positioning: a production-ready Astro starter with DaisyUI as a default and Alpine as a small optional enhancement layer
@@ -25,13 +27,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Redesigned the DaisyUI page into a reusable component reference and added richer sample blog content with images, video, and code examples
 
 ### Fixed
+
 - Blog post content now has built-in readable styles without depending on an uninstalled typography plugin
 
 ### Upgraded
+
 - `astro` 5.18.1 → 6.1.8
 - `@astrojs/mdx` 4.3.6 → 5.0.3
 
 ### Removed
+
 - `@astrojs/netlify` from the default template configuration
 - Unused showcase-style homepage components that made the starter feel more like a demo template
 
@@ -40,6 +45,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.5.0] — 2026-04-20
 
 ### Added
+
 - **Dark mode toggle** — `ThemeToggle.astro` with Alpine JS; flash-free via
   `is:inline` init script in `<head>` that resolves theme before first paint
   (localStorage → OS `prefers-color-scheme` → `'light'`)
@@ -65,18 +71,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   documenting key decisions made during this release
 
 ### Changed
+
 - `src/site-config.ts` — added `site` field as a fallback for `robots.txt`
   endpoint; kept in sync with `astro.config.mjs → site`
 - README fully updated: features list, commands table, project structure,
   new blog and removal-script sections, releasing guide; stale Roadmap removed
 
 ### Upgraded
-- `astro` 5.14.1 → **5.18.1** (latest Astro 5)
+
+- `astro` 5.14.1 → 5.18.1
 - `@astrojs/alpinejs` 0.4.9 → 0.5.0
 - `@astrojs/sitemap` 3.6.0 → 3.7.2
 - `alpinejs` 3.15.0 → 3.15.11
 
 ### Removed
+
 - `public/robots.txt` — superseded by the Astro endpoint
 
 ---
@@ -84,15 +93,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.4.0] — 2026-04-20
 
 ### Added
-- **Typed blog content collection** — `src/content.config.ts` using Astro 5
+
+- **Typed blog content collection** — `src/content.config.ts` using Astro's
   Content Layer API (`glob()` loader + Zod schema with shared `seoFields`
   fragment); generates types into `.astro/content.d.ts`
 - **Blog pages** — `/blog` listing (newest-first, draft-filtered) and
   `/blog/[id]` post page with `<Image />` for optional `heroImage`
-- **Placeholder blog post** — `src/content/blog/hello-world.md`
+- **Initial sample blog post** — starter content to verify the collection wiring
 - **`@content` path alias** — added to `tsconfig.json`; maps to `src/content/`
 
 ### Changed
+
 - `tsconfig.json` — removed non-existent `@lib` and `@utils` aliases; replaced
   `"types": ["astro/client"]` with `"include": ["src", ".astro/types.d.ts",
   ".astro/content.d.ts"]` so generated content types are picked up by
@@ -108,6 +119,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [0.3.0] — 2026-04-19
 
 ### Added
+
 - GitHub Actions CI workflow (`pnpm build` on push/PR)
 - GitHub issue templates (bug report, feature request)
 - `CONTRIBUTING.md`
@@ -116,6 +128,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `loading="lazy"` on YouTube embed in `SectionVideo`
 
 ### Changed
+
 - `site-config.ts`: corrected `githubRepo` to match actual repo name
 - `SEOmeta.astro`: Twitter/OG config now reads from `siteConfig.seo` instead of hardcoded values
 - `Footer.astro`: Mindstorm attribution gated behind `featureFlags.showAttribution`
@@ -128,6 +141,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `.gitignore` extended with `.wrangler`, `.vercel`, `.env` patterns
 
 ### Fixed
+
 - `Layout.astro`: `<body>` was outside `</html>` — HTML structure corrected
 - `Code.astro`: `var` → `const`
 - Multiple typos across `SimpleCTA.astro`, `SectionVideo.astro`, `site-config.ts`, `src/icons/README.md`

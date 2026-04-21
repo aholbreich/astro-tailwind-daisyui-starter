@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -8,8 +8,24 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com", // TODO: replace with your production URL (required for sitemap + SEO)
+  // Keep `site` driven by validated env so sitemap and canonical URLs stay correct.
+  site: process.env.PUBLIC_SITE_URL ?? "https://example.com",
   trailingSlash: "never",
+  env: {
+    schema: {
+      PUBLIC_SITE_URL: envField.string({
+        context: "client",
+        access: "public",
+        default: "https://example.com",
+        url: true,
+      }),
+      PUBLIC_TWITTER_HANDLE: envField.string({
+        context: "client",
+        access: "public",
+        default: "@yourhandle",
+      }),
+    },
+  },
   fonts: [
     {
       name: "Inter",

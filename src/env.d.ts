@@ -7,4 +7,8 @@
 // picked up automatically via the "include" entry in tsconfig.json — no manual
 // reference needed here.
 //
+// Public env vars such as `PUBLIC_SITE_URL` and `PUBLIC_TWITTER_HANDLE` are
+// validated in astro.config.mjs via `env.schema`, then exposed through
+// `import.meta.env` with types inferred by Astro.
+//
 // Do not delete this file.

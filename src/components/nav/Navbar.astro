@@ -10,14 +10,8 @@ const isActive = (url: string) => url === "/" ? pathname === "/" : pathname === 
 ---
 
 <div
-  x-data="{
-    open: false,
-    init() {
-      window.addEventListener('astro:page-load', () => {
-        this.open = false;
-      });
-    }
-  }"
+  x-data="{ open: false }"
+  x-on:astro:page-load.document="open = false"
   @keydown.escape.window="open = false"
 >
   <header class="border-b border-base-300 bg-base-100">

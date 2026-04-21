@@ -2,14 +2,14 @@ export const siteConfig = {
   title: "Your Site",
   description: "Minimal Astro site built with Tailwind CSS and DaisyUI.",
   githubRepo: "aholbreich/astro-tailwind-daisyui-starter",
-  // Keep in sync with `site` in astro.config.mjs (used as fallback in robots.txt)
-  site: "https://example.com",
+  // Astro validates these public env vars in astro.config.mjs.
+  site: import.meta.env.PUBLIC_SITE_URL,
   footerText: "Replace this with your company or site name.",
 
   // Used in SEOmeta for Twitter card and Open Graph
   seo: {
-    twitterHandle: "@yourhandle",
-    twitterSite: "https://example.com",
+    twitterHandle: import.meta.env.PUBLIC_TWITTER_HANDLE,
+    twitterSite: import.meta.env.PUBLIC_SITE_URL,
   },
 };
 

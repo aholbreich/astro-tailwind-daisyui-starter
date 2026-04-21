@@ -92,6 +92,16 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 Astro 6 requires Node `22.12.0` or newer. The repository includes an `.nvmrc`
 with that baseline.
 
+Set your public site metadata in `.env`:
+
+```bash
+PUBLIC_SITE_URL=https://example.com
+PUBLIC_TWITTER_HANDLE=@yourhandle
+```
+
+Astro validates these values in `astro.config.mjs`, then the starter reuses
+them in `src/site-config.ts` for sitemap, canonical URLs, and social metadata.
+
 ## Starter shape
 
 This starter is meant to be understandable at a glance:
@@ -131,7 +141,9 @@ This starter is meant to be understandable at a glance:
 
 ### `src/site-config.ts`
 
-Update the site title, description, production URL, navigation, footer text, and social metadata.
+Update the site title, description, navigation, footer text, and social metadata.
+The production URL and default Twitter handle come from validated public env
+vars so they stay aligned with Astro's `site` config.
 
 ### `src/styles/theme.css`
 

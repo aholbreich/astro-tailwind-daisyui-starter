@@ -79,16 +79,16 @@ pnpm dev
 
 ## Commands
 
-| Command               | Action                                   |
-| :-------------------- | :--------------------------------------- |
-| `pnpm install`        | Install dependencies                     |
-| `pnpm dev`            | Start the dev server on `localhost:4321` |
-| `pnpm check`          | Run `astro check`                        |
-| `pnpm build`          | Build the production site                |
-| `pnpm preview`        | Preview the production build locally     |
-| `pnpm astro ...`      | Run Astro CLI commands                   |
-| `pnpm release:minor`  | Guarded local release flow for a minor version |
-| `pnpm remove:alpine`  | Convenience script to strip Alpine JS    |
+| Command              | Action                                         |
+| :------------------- | :------------------------------------------    |
+| `pnpm install`       | Install dependencies                           |
+| `pnpm dev`           | Start the dev server on `localhost:4321`       |
+| `pnpm check`         | Run `astro check`                              |
+| `pnpm build`         | Build the production site                      |
+| `pnpm preview`       | Preview the production build locally           |
+| `pnpm astro ...`     | Run Astro CLI commands                         |
+| `pnpm release:minor` | Guarded local release flow for a minor version |
+| `pnpm remove:alpine` | Convenience script to strip Alpine JS          |
 
 ## Starter shape
 

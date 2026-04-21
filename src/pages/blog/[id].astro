@@ -22,9 +22,8 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <article class="container mx-auto px-4 py-12 max-w-3xl">
-
-    <header class="mb-10">
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <header class="space-y-4">
       <a href="/blog" class="link link-hover text-sm text-base-content/60">← All posts</a>
 
       <!--
@@ -40,12 +39,13 @@ const { Content } = await render(post);
           alt={post.data.title}
           width={1200}
           height={630}
-          class="rounded-xl mt-6 mb-4 w-full object-cover"
+          class="mt-2 w-full rounded-box object-cover"
         />
       )}
 
-      <h1 class="text-4xl font-bold mt-4 mb-2">{post.data.title}</h1>
-      <p class="text-base-content/60 text-sm">
+      <div class="space-y-2">
+        <h1 class="text-4xl font-bold tracking-tight">{post.data.title}</h1>
+        <p class="text-sm text-base-content/60">
         <time datetime={post.data.pubDate.toISOString()}>
           {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
         </time>
@@ -56,12 +56,17 @@ const { Content } = await render(post);
             </time>
           </span>
         )}
-      </p>
+        </p>
+      </div>
     </header>
 
-    <div class="content-rich">
+    <!--
+      daisyUI recommends using Tailwind utilities for layout and the Typography
+      plugin for rich text. `prose` gives Markdown content predictable defaults
+      without maintaining a custom article stylesheet in the starter.
+    -->
+    <div class="prose prose-neutral mt-10 max-w-none prose-a:link prose-img:rounded-box">
       <Content />
     </div>
-
   </article>
 </Layout>

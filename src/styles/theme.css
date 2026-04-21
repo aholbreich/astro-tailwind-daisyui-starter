@@ -1,4 +1,5 @@
 @plugin "daisyui";
+@plugin "@tailwindcss/typography";
 
 /* Custom theme vars live here */
 @theme {

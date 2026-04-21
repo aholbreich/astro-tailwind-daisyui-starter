@@ -43,6 +43,7 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 - DaisyUI 5 as the default UI layer
 - Alpine JS for small enhancements only
 - Typed blog content collection with Markdown and MDX support
+- Tailwind Typography plugin for blog/article content
 - SEO meta component, sitemap, and `robots.txt`
 - `astro-icon` with local SVG icons
 - Self-hosted Inter Variable font

@@ -12,6 +12,7 @@ README. Previously the removal instructions were a bullet list of manual steps:
 uninstall the package, remove an import, edit a config file, delete a folder.
 
 Problems with the manual approach:
+
 - Easy to miss a step, leaving broken imports or dead config entries.
 - Alpine removal requires rewriting two components (ThemeToggle, Navbar) with
   vanilla JS equivalents — non-trivial for a developer unfamiliar with the code.
@@ -23,6 +24,7 @@ Provide `scripts/remove.mjs` — a Node.js script with `--daisyui` and `--alpine
 flags, invokable via `pnpm remove:daisyui` and `pnpm remove:alpine`.
 
 The script handles everything that can be done safely and deterministically:
+
 - Uninstalls packages via `pnpm remove`
 - Patches config files with regex (theme.css, astro.config.mjs, site-config.ts)
 - Deletes demo pages and component folders
@@ -30,6 +32,7 @@ The script handles everything that can be done safely and deterministically:
   vanilla JS equivalents that use `astro:page-load` for View Transitions compat
 
 What the script explicitly does NOT do:
+
 - Remove DaisyUI utility classes from HTML (too risky to automate reliably)
 - Rewrite custom Alpine directives added by the user outside template files
 
@@ -46,13 +49,16 @@ The script prints clear warnings listing what still needs manual attention.
 ## Options considered
 
 ### Option 1: Manual documentation only (previous approach)
+
 Simple to maintain but easy to miss steps and drifts out of date.
 
 ### Option 2: Full codemods (e.g. jscodeshift)
+
 Accurate but heavy — requires an AST parser dependency, significant
 maintenance burden for a starter template. Overkill.
 
 ### Option 3: Node.js script with regex + file operations (chosen)
+
 No extra dependencies (uses Node built-ins only). Covers the deterministic
 parts, defers the non-deterministic parts (class cleanup) to the developer
 with explicit guidance.

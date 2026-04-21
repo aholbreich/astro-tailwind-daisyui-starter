@@ -1,6 +1,6 @@
 # 1. Self-host fonts via Fontsource instead of CDN
 
-Status: Accepted
+Status: Superseded by ADR 004
 Status Date: 2026-04-20
 Driver: Alexander Holbreich
 Contributors: —
@@ -37,14 +37,17 @@ on `body`. No external requests are made at runtime.
 ## Options considered
 
 ### Option 1: Google Fonts `<link>` in Layout.astro
+
 Zero npm overhead, but ships user IPs to Google. Not acceptable for a
 GDPR-conscious template targeting European deployments.
 
 ### Option 2: Astro 6 font API (`fontProviders`)
+
 Ideal — type-safe, provider-agnostic, self-hosted by default. Not available
 in Astro 5. Will replace this decision when the project upgrades to Astro 6.
 
 ### Option 3: Fontsource npm package (chosen)
+
 Privacy-safe, works in Astro 5, swappable by changing one `@import` line.
 
 ## Advices

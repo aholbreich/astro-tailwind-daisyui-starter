@@ -1,7 +1,7 @@
 /**
  * Content Collections — the single source of truth for all typed content.
  *
- * Astro 5 uses the Content Layer API:
+ * Astro 6 uses the Content Layer API:
  *   - Each collection needs a `loader` (where to find files) and an optional
  *     `schema` (Zod object that validates frontmatter at build time).
  *   - After running `astro dev` or `astro build`, Astro writes generated
@@ -14,8 +14,9 @@
  * Docs: https://docs.astro.build/en/guides/content-collections/
  */
 
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 // ---------------------------------------------------------------------------
 // Shared schema fragments — reuse across collections to stay DRY.

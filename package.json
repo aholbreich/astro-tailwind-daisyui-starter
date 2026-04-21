@@ -20,7 +20,7 @@
   ],
   "packageManager": "pnpm@10.18.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
   },
   "type": "module",
   "version": "1.0.0",
@@ -38,14 +38,13 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.5.0",
-    "@astrojs/mdx": "^4.3.6",
-    "@astrojs/netlify": "^6.5.11",
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/netlify": "^7.0.7",
     "@astrojs/sitemap": "^3.7.2",
-    "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.1.13",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.15.11",
-    "astro": "^5.18.1",
+    "astro": "^6.1.8",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "tailwindcss": "^4.1.13"

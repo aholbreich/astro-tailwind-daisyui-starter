@@ -29,7 +29,7 @@ It is meant to be friendly to both experienced developers and newcomers who want
 
 It keeps the stack focused on purpose:
 
-- Astro 5 for the site shell and content-first workflow
+- Astro 6 for the site shell and content-first workflow
 - Tailwind CSS 4 for styling
 - DaisyUI 5 as the default UI layer
 - Alpine JS only where a few lines of client-side behavior are useful
@@ -52,7 +52,7 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 
 ## Included
 
-- Astro 5
+- Astro 6
 - Tailwind CSS 4 via `@tailwindcss/vite`
 - DaisyUI 5 as the default UI layer
 - Alpine JS for small enhancements only
@@ -60,7 +60,7 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 - Tailwind Typography plugin for blog/article content
 - SEO meta component, sitemap, and `robots.txt`
 - `astro-icon` with local SVG icons
-- Self-hosted Inter Variable font
+- Inter configured through Astro 6's fonts API with a checked-in local variable font
 - Dark mode toggle with no flash on first paint
 - Accessibility basics including skip link and reduced-motion support
 - Netlify adapter by default, easy to swap
@@ -88,6 +88,9 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 | `pnpm astro ...`     | Run Astro CLI commands                         |
 | `pnpm release:minor` | Guarded local release flow for a minor version |
 | `pnpm remove:alpine` | Convenience script to strip Alpine JS          |
+
+Astro 6 requires Node `22.12.0` or newer. The repository includes an `.nvmrc`
+with that baseline.
 
 ## Starter shape
 
@@ -134,6 +137,23 @@ Update the site title, description, production URL, navigation, footer text, and
 
 Adjust DaisyUI and theme tokens. If you want to move away from DaisyUI later, this is one of the main files you will touch.
 
+### Fonts
+
+The starter uses Astro 6's fonts API end to end:
+
+- `astro.config.mjs` registers the local Inter variable font and exposes `--font-inter`
+- `src/layouts/Layout.astro` loads it with `<Font cssVariable="--font-inter" />`
+- `src/styles/fonts.css` maps that variable to Tailwind's `--font-sans`
+
+That means Tailwind utilities and DaisyUI components both inherit the same
+font without extra component-level setup.
+
+This separation is intentional:
+
+- Astro handles font sourcing, optimization, and the CSS variable
+- Tailwind uses that variable as the shared sans-serif token
+- DaisyUI inherits the Tailwind font token through the normal component styles
+
 ### `src/layouts/Layout.astro`
 
 Update the HTML shell, view transitions, metadata defaults, and theme bootstrapping.
@@ -144,7 +164,8 @@ Set the final `site` URL and swap the deployment adapter if needed.
 
 ## Blog support
 
-Posts live in `src/content/blog/`. The included `hello-world.md` is a deletion-friendly sample post that verifies the collection is wired correctly.
+Posts live in `src/content/blog/`. The included sample posts are meant to show
+real Markdown/MDX usage, including images, video embeds, and code blocks.
 
 Add a post like this:
 

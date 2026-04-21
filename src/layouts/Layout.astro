@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import { ClientRouter } from 'astro:transitions';
 import Navbar from "@components/nav/Navbar.astro";
 import Footer from "@components/Footer.astro";
@@ -27,6 +28,14 @@ const { title = siteConfig.title, description, image } = Astro.props;
     <meta name="generator" content={Astro.generator} />
 
     <SEOmeta title={title} description={description} image={image} />
+    <!--
+      Fonts flow:
+      1. astro.config.mjs registers the font and exposes `--font-inter`.
+      2. <Font /> loads that configured family into the page head.
+      3. src/styles/fonts.css maps the variable into Tailwind's `--font-sans`,
+         so DaisyUI components inherit the same font automatically.
+    -->
+    <Font cssVariable="--font-inter" preload />
 
     <!--
       View Transitions — enables animated, SPA-like page navigation.

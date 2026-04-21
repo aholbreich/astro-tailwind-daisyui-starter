@@ -6,10 +6,10 @@ This directory holds all content collection source files (Markdown, MDX, JSON, Y
 
 Each subdirectory maps to a collection defined in `src/content.config.ts`:
 
-```
+```text
 src/content/
   blog/          ← matches the `blog` collection in content.config.ts
-    hello-world.md
+    getting-started-with-this-starter.mdx
     my-post.mdx
 ```
 

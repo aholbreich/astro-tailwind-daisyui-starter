@@ -18,6 +18,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - DaisyUI removal support dropped; DaisyUI now remains a fixed part of the default starter story
 - Local releases now use guarded `pnpm release:patch|minor|major` scripts instead of relying directly on raw `pnpm version`
 - Blog content styling now follows the daisyUI-documented approach: Tailwind utilities for layout plus the Tailwind Typography plugin for rich text
+- Added ADR 003 to document the decision to use Tailwind Typography for article content
+-  Redesigned the whole Daisy UI page. Now its showcase for components.
 
 ### Fixed
 - Blog post content now has built-in readable styles without depending on an uninstalled typography plugin

@@ -4,6 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import { siteConfig } from "site-config";
 
 const quickstart = `pnpm create astro@latest --template ${siteConfig.githubRepo}`;
+const quickstartId = "quickstart-command";
 
 // Keep page content data-driven so the homepage stays easy to scan and edit.
 const defaults = [
@@ -72,7 +73,23 @@ const starterTraits = [
       <aside class="card border border-base-300 bg-base-100 shadow-sm">
         <div class="card-body gap-4">
           <p class="text-sm font-semibold uppercase tracking-wide text-base-content/60">Quick start</p>
-          <pre class="overflow-x-auto rounded-box bg-base-200 p-4 text-sm"><code>{quickstart}</code></pre>
+          <div class="rounded-box border border-base-300 bg-base-200">
+            <div class="flex items-center justify-between gap-3 border-b border-base-300 px-4 py-3">
+              <div class="flex items-center gap-2 text-xs uppercase tracking-wide text-base-content/60">
+                <span class="h-2.5 w-2.5 rounded-full bg-success"></span>
+                <span>Command</span>
+              </div>
+              <button
+                type="button"
+                class="btn btn-xs btn-ghost"
+                data-copy-button
+                data-copy-target={quickstartId}
+              >
+                Copy
+              </button>
+            </div>
+            <pre class="overflow-x-auto px-4 py-4 text-sm leading-6"><code id={quickstartId}>{quickstart}</code></pre>
+          </div>
           <p class="text-sm text-base-content/70">
             Update `src/site-config.ts`, replace the sample content, and delete anything you do not need.
           </p>
@@ -116,3 +133,34 @@ const starterTraits = [
     </section>
   </Container>
 </Layout>
+
+<script>
+  function initCopyButtons() {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-button]').forEach((button) => {
+      if (button.dataset.copyReady === 'true') return;
+      button.dataset.copyReady = 'true';
+
+      button.addEventListener('click', async () => {
+        const targetId = button.getAttribute('data-copy-target');
+        const source = targetId ? document.getElementById(targetId) : null;
+        if (!source) return;
+
+        const originalLabel = button.textContent ?? 'Copy';
+
+        try {
+          await navigator.clipboard.writeText(source.textContent ?? '');
+          button.textContent = 'Copied';
+        } catch {
+          button.textContent = 'Failed';
+        }
+
+        window.setTimeout(() => {
+          button.textContent = originalLabel;
+        }, 1200);
+      });
+    });
+  }
+
+  // Re-run after Astro view transitions so the button works on client navigation too.
+  document.addEventListener('astro:page-load', initCopyButtons);
+</script>

@@ -2,24 +2,28 @@ name: Release
 
 # Triggered by pushing a version tag, e.g.: git push && git push --tags
 # This workflow:
-#   1. Syncs package.json "version" to match the git tag (single source of truth)
+#   1. Verifies that package.json already matches the pushed git tag
 #   2. Creates a GitHub Release with auto-generated release notes
 #
 # Recommended release flow:
 #   pnpm release:patch|minor|major   ← runs checks, confirms, then calls pnpm version
 #   git push && git push --tags      ← triggers this workflow
 #
-# Or manually:
-#   git tag v0.4.0 && git push --tags
-#   Then manually bump package.json here or let this workflow do it.
+# The release workflow is intentionally read-only with respect to repository
+# state. If package.json and the tag disagree, fail loudly instead of mutating
+# main from CI.
 
 on:
   push:
     tags:
       - 'v*'
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
-  contents: write   # needed to commit the version bump and create the release
+  contents: write
 
 jobs:
   release:
@@ -27,10 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          # Fetch the full history so we can push a commit back.
+          # Fetch full history so GitHub can generate complete release notes.
           fetch-depth: 0
-          # Use a token that allows pushing commits to protected branches.
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: pnpm/action-setup@v4
 
@@ -39,21 +41,17 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
 
-      - name: Sync package.json version to tag
+      - name: Validate tag matches package.json version
         run: |
-          # Strip leading "v" from the tag name (v0.4.0 → 0.4.0)
-          VERSION="${GITHUB_REF_NAME#v}"
-          echo "Setting package.json version to $VERSION"
-          # pnpm version --no-git-tag-version updates package.json without
-          # creating another tag (the tag already exists from the push).
-          pnpm version "$VERSION" --no-git-tag-version
-          # Commit only if there was a change (tag and package.json were out of sync)
-          if ! git diff --quiet package.json; then
-            git config user.name  "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add package.json pnpm-lock.yaml
-            git commit -m "chore: sync version to $GITHUB_REF_NAME"
-            git push origin HEAD:main
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          echo "Tag version: $TAG_VERSION"
+          echo "package.json version: $PACKAGE_VERSION"
+
+          if [ "$TAG_VERSION" != "$PACKAGE_VERSION" ]; then
+            echo "Release tag and package.json version do not match."
+            echo "Update package.json locally with pnpm release:* or pnpm version before pushing the tag."
+            exit 1
           fi
 
       - name: Create GitHub Release

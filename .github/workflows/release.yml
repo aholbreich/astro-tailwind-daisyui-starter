@@ -25,7 +25,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           # Fetch the full history so we can push a commit back.
           fetch-depth: 0
@@ -33,12 +33,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: latest
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: pnpm
 
       - name: Sync package.json version to tag

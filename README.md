@@ -87,7 +87,6 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 | `pnpm preview`       | Preview the production build locally           |
 | `pnpm astro ...`     | Run Astro CLI commands                         |
 | `pnpm release:minor` | Guarded local release flow for a minor version |
-| `pnpm remove:alpine` | Convenience script to strip Alpine JS          |
 
 Astro 6 requires Node `22.12.0` or newer. The repository includes an `.nvmrc`
 with that baseline.
@@ -121,7 +120,7 @@ This starter is meant to be understandable at a glance:
 │   └── workflows/
 ├── public/
 ├── scripts/
-│   └── remove.mjs
+│   └── release.mjs
 ├── src/
 │   ├── components/
 │   ├── content/
@@ -192,14 +191,6 @@ draft: false
 
 Your content here.
 ```
-
-## Optional removal script
-
-`pnpm remove:alpine` exists to handle the repetitive parts of removing Alpine if you do not want that small enhancement layer.
-
-This is a convenience escape hatch. It is not the main product story, and this repository is not intended to turn into an install wizard or configurable setup system.
-
-If you use it, review the resulting project and clean up any remaining client-side behavior that is specific to your site.
 
 ## Deployment
 

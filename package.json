@@ -33,8 +33,7 @@
     "astro": "astro",
     "release:patch": "node scripts/release.mjs patch",
     "release:minor": "node scripts/release.mjs minor",
-    "release:major": "node scripts/release.mjs major",
-    "remove:alpine": "node scripts/remove.mjs --alpine"
+    "release:major": "node scripts/release.mjs major"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.5.0",

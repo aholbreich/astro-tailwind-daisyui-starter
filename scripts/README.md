@@ -1,4 +1,5 @@
 # Automation helpers
 
-Scripts in this directory are not part of the templait and are not exposed in you web project.
-Just needed to suport some of the pnpm _comands_.
+Scripts in this directory support repository maintenance.
+
+They are not part of the generated website itself.

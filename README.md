@@ -63,7 +63,7 @@ The goal is simple: start quickly, keep control, and ship without unnecessary se
 - Inter configured through Astro 6's fonts API with a checked-in local variable font
 - Dark mode toggle with no flash on first paint
 - Accessibility basics including skip link and reduced-motion support
-- Netlify adapter by default, easy to swap
+- Static output by default, adapter-free until you actually need one
 - GitHub Actions CI for `astro check` and build
 
 ## Intentionally not included
@@ -160,7 +160,8 @@ Update the HTML shell, view transitions, metadata defaults, and theme bootstrapp
 
 ### `astro.config.mjs`
 
-Set the final `site` URL and swap the deployment adapter if needed.
+Set the final `site` URL. Add a deployment adapter only if your target platform
+or runtime needs one.
 
 ## Blog support
 
@@ -190,7 +191,11 @@ If you use it, review the resulting project and clean up any remaining client-si
 
 ## Deployment
 
-The starter currently ships with the Netlify adapter because it is a reasonable default. If you prefer Vercel, Cloudflare, or plain static output, swap the adapter in `astro.config.mjs`.
+The starter builds as a plain static Astro site by default.
+
+That keeps the template portable and easier to understand. If you later need
+platform-specific SSR, image services, edge runtime support, or other adapter
+features, add the relevant adapter for your deployment target at that point.
 
 Set `site` in `astro.config.mjs` to your production URL so sitemap and canonical URLs are correct.
 

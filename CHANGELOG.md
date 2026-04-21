@@ -9,6 +9,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Changed
+- Removed the Netlify adapter from the default static starter so deployment starts adapter-free unless a project explicitly needs one
 - Switched the starter font setup to Astro 6's local fonts API flow and documented how Astro config, `<Font />`, Tailwind, and DaisyUI fit together
 - Upgraded the starter to Astro 6 and refreshed repo docs, comments, and sample content to match the current Astro release
 - README rewritten around the repository's core positioning: a production-ready Astro starter with DaisyUI as a default and Alpine as a small optional enhancement layer
@@ -29,9 +30,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Upgraded
 - `astro` 5.18.1 → 6.1.8
 - `@astrojs/mdx` 4.3.6 → 5.0.3
-- `@astrojs/netlify` 6.5.11 → 7.0.7
 
 ### Removed
+- `@astrojs/netlify` from the default template configuration
 - Unused showcase-style homepage components that made the starter feel more like a demo template
 
 ---

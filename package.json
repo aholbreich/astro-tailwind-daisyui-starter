@@ -31,6 +31,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "release:patch": "node scripts/release.mjs patch",
+    "release:minor": "node scripts/release.mjs minor",
+    "release:major": "node scripts/release.mjs major",
     "remove:alpine": "node scripts/remove.mjs --alpine"
   },
   "dependencies": {

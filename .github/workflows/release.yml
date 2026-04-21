@@ -1,12 +1,12 @@
 name: Release
 
-# Triggered by pushing a version tag, e.g.: git tag v0.4.0 && git push --tags
+# Triggered by pushing a version tag, e.g.: git push && git push --tags
 # This workflow:
 #   1. Syncs package.json "version" to match the git tag (single source of truth)
 #   2. Creates a GitHub Release with auto-generated release notes
 #
 # Recommended release flow:
-#   pnpm version patch|minor|major   ← bumps package.json AND creates the tag
+#   pnpm release:patch|minor|major   ← runs checks, confirms, then calls pnpm version
 #   git push && git push --tags      ← triggers this workflow
 #
 # Or manually:

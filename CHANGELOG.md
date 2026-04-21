@@ -16,6 +16,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `package.json` metadata expanded with description, repository links, keywords, Node engine, and a `pnpm check` script
 - `CONTRIBUTING.md` clarified to reinforce the production-ready starter scope
 - DaisyUI removal support dropped; DaisyUI now remains a fixed part of the default starter story
+- Local releases now use guarded `pnpm release:patch|minor|major` scripts instead of relying directly on raw `pnpm version`
 
 ### Fixed
 - Blog post content now has built-in readable styles without depending on an uninstalled typography plugin

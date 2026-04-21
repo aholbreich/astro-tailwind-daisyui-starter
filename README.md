@@ -86,6 +86,7 @@ pnpm dev
 | `pnpm build`          | Build the production site                |
 | `pnpm preview`        | Preview the production build locally     |
 | `pnpm astro ...`      | Run Astro CLI commands                   |
+| `pnpm release:minor`  | Guarded local release flow for a minor version |
 | `pnpm remove:alpine`  | Convenience script to strip Alpine JS    |
 
 ## Starter shape
@@ -181,11 +182,21 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md).
 This repository uses semver.
 
 ```bash
-pnpm version patch
+pnpm release:patch
+pnpm release:minor
+pnpm release:major
 git push && git push --tags
 ```
 
-The release workflow creates a GitHub Release from the pushed tag.
+The local release script checks that:
+
+- you are on `main`
+- the working tree is clean
+- `CHANGELOG.md` still has an `Unreleased` section
+- `pnpm check` passes
+- `pnpm build` passes
+
+It then asks for confirmation and runs `pnpm version` for you. The pushed tag triggers the GitHub release workflow.
 
 ## License
 

@@ -1,11 +1,33 @@
 {
   "name": "astro-tailwind-daisyui-starter",
+  "description": "Production-ready Astro starter with Tailwind CSS 4, DaisyUI 5, blog support, SEO basics, and optional Alpine JS.",
   "homepage": "https://github.com/aholbreich/astro-tailwind-daisyui-starter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aholbreich/astro-tailwind-daisyui-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues"
+  },
+  "keywords": [
+    "astro",
+    "starter",
+    "template",
+    "tailwindcss",
+    "daisyui",
+    "blog",
+    "seo"
+  ],
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "version": "0.5.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

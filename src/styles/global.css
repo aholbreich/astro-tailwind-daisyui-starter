@@ -28,16 +28,52 @@
 }
 
 @layer components {
-    /* Example: floating action menu pattern */
-    .floating-menu {
-        @apply fixed right-5 bottom-1 flex flex-col items-end space-y-3;
+    /* Small markdown/content defaults so blog posts read well without extra plugins. */
+    .content-rich {
+        @apply text-base leading-7 text-base-content/85;
     }
 
-    .menu-item {
-        @apply flex items-center space-x-2 opacity-0 transform scale-95 transition-all;
+    .content-rich > * + * {
+        @apply mt-5;
     }
 
-    .menu-item.show {
-        @apply opacity-100 scale-100;
+    .content-rich :where(h2, h3, h4) {
+        @apply mt-10 font-semibold tracking-tight text-base-content;
+    }
+
+    .content-rich h2 {
+        @apply text-2xl;
+    }
+
+    .content-rich h3 {
+        @apply text-xl;
+    }
+
+    .content-rich :where(ul, ol) {
+        @apply ml-6 space-y-2;
+    }
+
+    .content-rich ul {
+        @apply list-disc;
+    }
+
+    .content-rich ol {
+        @apply list-decimal;
+    }
+
+    .content-rich a {
+        @apply underline decoration-primary/40 underline-offset-4 hover:decoration-primary;
+    }
+
+    .content-rich code {
+        @apply rounded bg-base-200 px-1.5 py-0.5 text-sm;
+    }
+
+    .content-rich pre {
+        @apply overflow-x-auto rounded-box bg-base-200 p-4;
+    }
+
+    .content-rich blockquote {
+        @apply border-l-4 border-base-300 pl-4 italic text-base-content/70;
     }
 }

@@ -1,23 +1,23 @@
 export const siteConfig = {
-  title: "My Astro Site",
-  description: "This is a fantastic Astro site",
+  title: "Your Site",
+  description: "Minimal Astro site built with Tailwind CSS and DaisyUI.",
   githubRepo: "aholbreich/astro-tailwind-daisyui-starter",
   // Keep in sync with `site` in astro.config.mjs (used as fallback in robots.txt)
   site: "https://example.com",
+  footerText: "Replace this with your company or site name.",
 
   // Used in SEOmeta for Twitter card and Open Graph
   seo: {
     twitterHandle: "@yourhandle",
-    twitterSite: "https://yoursite.com",
+    twitterSite: "https://example.com",
   },
 };
 
 // Feature flags examples
 export const featureFlags = {
-  enableBetaFeatures: false,
   enableImprint: true,
   enableDataprotection: false,
-  showAttribution: true, // Show "Made by" footer link — set false to remove
+  showAttribution: false, // Show starter attribution in the footer if you want it
 };
 
 // Navigation menu items
@@ -33,9 +33,5 @@ export const nav = [
   {
     text: "DaisyUI",
     url: "/daisyui",
-  },
-  {
-    text: "404",
-    url: "/404",
   },
 ];

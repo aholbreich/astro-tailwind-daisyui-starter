@@ -1,19 +1,26 @@
 # Contributing
 
-Thanks for your interest in improving this starter.
+This repository is a production-ready Astro starter. Contributions should make the default starter clearer, more reliable, or easier to reuse.
 
-## What belongs here
-
-This is a **minimal base starter**, not a theme or component library. Contributions should stay in that spirit:
+## What fits
 
 - Bug fixes
-- Corrections to documentation
-- Better defaults or ergonomic improvements
-- New examples that are easy to delete
+- Documentation improvements
+- Better defaults
+- Small ergonomic improvements
+- Examples that are realistic, polished, and easy to delete
 
-If you want to add a full feature (blog, auth, i18n, etc.) — please open an issue first to discuss whether it fits.
+## What usually does not fit
 
-## Getting started
+- Theme-level design expansions
+- Large component galleries
+- Install-time option matrices
+- Framework additions outside the current Astro plus Tailwind plus DaisyUI direction
+- Features that belong in downstream projects instead of the base starter
+
+If you want to propose a bigger change, open an issue first and explain why it belongs in the base template.
+
+## Local setup
 
 ```bash
 git clone https://github.com/aholbreich/astro-tailwind-daisyui-starter.git
@@ -22,18 +29,20 @@ pnpm install
 pnpm dev
 ```
 
-Make sure `pnpm build` and `pnpm astro check` pass before submitting a PR.
+Before opening a pull request, run:
 
-## Reporting bugs
-
-Use the [bug report template](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=bug_report.md).
-
-## Requesting features
-
-Use the [feature request template](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=feature_request.md).
+```bash
+pnpm check
+pnpm build
+```
 
 ## Pull requests
 
-- Keep PRs focused — one change per PR
-- Reference the related issue if one exists
-- Update the README if you change a documented behavior
+- Keep changes focused.
+- Update documentation when behavior changes.
+- Preserve the product direction: opinionated default starter, optional escape hatches, no setup wizard.
+
+## Issues
+
+- Bugs: [bug report template](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=bug_report.md)
+- Changes and ideas: [feature request template](https://github.com/aholbreich/astro-tailwind-daisyui-starter/issues/new?template=feature_request.md)

@@ -6,6 +6,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Changed
+- README rewritten around the repository's core positioning: a production-ready Astro starter with DaisyUI as a default and Alpine as a small optional enhancement layer
+- Starter homepage rewritten to present the template as a clean default project instead of a generic demo page
+- `src/site-config.ts` defaults tightened: clearer placeholder copy, no `404` nav item, footer text config added, attribution off by default
+- `src/pages/daisyui.astro` reframed as a small reference page instead of a component-gallery direction signal
+- `package.json` metadata expanded with description, repository links, keywords, Node engine, and a `pnpm check` script
+- `CONTRIBUTING.md` clarified to reinforce the production-ready starter scope
+
+### Fixed
+- Blog post content now has built-in readable styles without depending on an uninstalled typography plugin
+
+### Removed
+- Unused showcase-style homepage components that made the starter feel more like a demo template
+
+---
+
 ## [0.5.0] — 2026-04-20
 
 ### Added

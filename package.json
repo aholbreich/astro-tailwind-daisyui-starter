@@ -23,7 +23,7 @@
     "node": ">=20"
   },
   "type": "module",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

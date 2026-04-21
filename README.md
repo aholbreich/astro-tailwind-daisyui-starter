@@ -21,7 +21,6 @@ It keeps the stack focused on purpose:
 
 The goal is simple: start quickly, keep control, and ship without unnecessary setup friction.
 
-
 ## Choose this if
 
 - You want a clean Astro starter with strong defaults instead of a blank repo.

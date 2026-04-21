@@ -31,7 +31,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "remove:daisyui": "node scripts/remove.mjs --daisyui",
     "remove:alpine": "node scripts/remove.mjs --alpine"
   },
   "dependencies": {

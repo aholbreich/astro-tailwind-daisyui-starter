@@ -9,7 +9,7 @@
 This repository is a production-ready Astro starter.
 
 It is opinionated enough to be useful, but small enough to understand quickly.
-It offers strong defaults and a few clean escape hatches.
+It offers strong defaults and a small number of focused escape hatches.
 It is meant to be friendly to both experienced developers and newcomers who want a clear starting point they can control.
 
 It keeps the stack focused on purpose:
@@ -86,7 +86,6 @@ pnpm dev
 | `pnpm build`          | Build the production site                |
 | `pnpm preview`        | Preview the production build locally     |
 | `pnpm astro ...`      | Run Astro CLI commands                   |
-| `pnpm remove:daisyui` | Convenience script to strip DaisyUI      |
 | `pnpm remove:alpine`  | Convenience script to strip Alpine JS    |
 
 ## Starter shape
@@ -97,7 +96,7 @@ This starter is meant to be understandable at a glance:
 - One base layout: `src/layouts/Layout.astro`
 - A small set of components you can keep or delete
 - A minimal blog collection in `src/content/blog/`
-- A single DaisyUI reference page you can remove once you no longer need it
+- A single DaisyUI reference page you can keep, adapt, or delete
 
 ## Project structure
 
@@ -159,13 +158,13 @@ draft: false
 Your content here.
 ```
 
-## Optional removal scripts
+## Optional removal script
 
-`pnpm remove:daisyui` and `pnpm remove:alpine` exist to handle the repetitive parts of removing those pieces from the starter.
+`pnpm remove:alpine` exists to handle the repetitive parts of removing Alpine if you do not want that small enhancement layer.
 
-They are convenience escape hatches. They are not the main product story, and this repository is not intended to turn into an install wizard or configurable setup system.
+This is a convenience escape hatch. It is not the main product story, and this repository is not intended to turn into an install wizard or configurable setup system.
 
-If you use them, review the resulting project and clean up any remaining markup or styles that are specific to your site.
+If you use it, review the resulting project and clean up any remaining client-side behavior that is specific to your site.
 
 ## Deployment
 

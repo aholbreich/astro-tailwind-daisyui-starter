@@ -15,6 +15,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `src/pages/daisyui.astro` reframed as a small reference page instead of a component-gallery direction signal
 - `package.json` metadata expanded with description, repository links, keywords, Node engine, and a `pnpm check` script
 - `CONTRIBUTING.md` clarified to reinforce the production-ready starter scope
+- DaisyUI removal support dropped; DaisyUI now remains a fixed part of the default starter story
 
 ### Fixed
 - Blog post content now has built-in readable styles without depending on an uninstalled typography plugin
@@ -45,8 +46,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **GitHub release workflow** — `.github/workflows/release.yml` syncs
   `package.json` version to the pushed git tag and creates a GitHub Release
   with auto-generated notes
-- **`remove.mjs` script** — `pnpm remove:daisyui` and `pnpm remove:alpine`
-  automate the optional dependency removal; Alpine removal rewrites
+- **`remove.mjs` script** — `pnpm remove:alpine`
+  automates Alpine removal; the script rewrites
   `ThemeToggle.astro` and `Navbar.astro` with vanilla JS equivalents
 - **ADR directory** — `.adr/` with five Architecture Decision Records
   documenting key decisions made during this release

@@ -1,6 +1,7 @@
 ---
 import Buttons from "@components/daisyui/Buttons.astro";
 import Container from "@components/elements/Container.astro";
+import Sectionhead from "@components/elements/Sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
@@ -8,19 +9,15 @@ import Layout from "@layouts/Layout.astro";
   title="DaisyUI reference"
   description="Small DaisyUI reference page included with the starter."
 >
-  <Container class="py-16">
-    <div class="max-w-3xl space-y-4">
-      <p class="badge badge-outline">Reference page</p>
-      <h1 class="text-4xl font-bold tracking-tight">DaisyUI is the default UI layer.</h1>
-      <p class="text-base-content/70 text-lg">
-        This page is intentionally small. It exists to show that DaisyUI is wired up and ready to use, not to turn the starter into a component gallery.
-      </p>
-      <p class="text-base-content/70">
-        Keep it as a quick reference, expand it for your own project, or delete it once you no longer need it.
-      </p>
-    </div>
+  <Container class="py-12 sm:py-16 lg:py-24">
+    <Sectionhead eyebrow="Reference">
+      <Fragment slot="title">DaisyUI is the default UI layer.</Fragment>
+      <Fragment slot="desc">
+        This page is intentionally small. It shows that DaisyUI is wired up and ready to use without turning the starter into a component gallery.
+      </Fragment>
+    </Sectionhead>
 
-    <div class="mt-10">
+    <div class="mt-10 max-w-3xl">
       <Buttons />
     </div>
   </Container>

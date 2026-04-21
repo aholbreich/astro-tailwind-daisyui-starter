@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import Container from '@components/elements/Container.astro';
 import Layout from '@layouts/Layout.astro';
 import Sectionhead from '@components/elements/Sectionhead.astro';
 
@@ -12,32 +13,36 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 ---
 
 <Layout title="Blog" description="All posts">
-  <Sectionhead>
-    <Fragment slot="title">Blog</Fragment>
-    <Fragment slot="desc">All posts, newest first.</Fragment>
-  </Sectionhead>
+  <Container class="py-12 sm:py-16 lg:py-24">
+    <Sectionhead eyebrow="Content">
+      <Fragment slot="title">Blog</Fragment>
+      <Fragment slot="desc">All posts, newest first.</Fragment>
+    </Sectionhead>
 
-  <section class="container mx-auto px-4 py-12 max-w-3xl">
-    {posts.length === 0 && (
-      <p class="text-base-content/60">No posts yet. Add a Markdown file to <code>src/content/blog/</code>.</p>
-    )}
+    <section class="mt-10 max-w-3xl">
+      {posts.length === 0 && (
+        <div class="alert alert-info">
+          <span>No posts yet. Add a Markdown file to <code>src/content/blog/</code>.</span>
+        </div>
+      )}
 
-    <ul class="flex flex-col gap-6">
-      {posts.map((post: Post) => (
-        <li>
-          <a href={`/blog/${post.id}`} class="card card-border bg-base-100 hover:shadow-md transition-shadow">
-            <div class="card-body">
-              <h2 class="card-title">{post.data.title}</h2>
-              <p class="text-base-content/70 text-sm">
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </time>
-              </p>
-              <p>{post.data.description}</p>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
+      <ul class="flex flex-col gap-6">
+        {posts.map((post: Post) => (
+          <li>
+            <a href={`/blog/${post.id}`} class="card border border-base-300 bg-base-100 transition-shadow hover:shadow-md">
+              <div class="card-body gap-3">
+                <h2 class="card-title">{post.data.title}</h2>
+                <p class="text-sm text-base-content/70">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                </p>
+                <p>{post.data.description}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </Container>
 </Layout>

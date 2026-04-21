@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
+import Container from '@components/elements/Container.astro';
 import Layout from '@layouts/Layout.astro';
 
 // getStaticPaths() tells Astro which URLs to generate at build time.
@@ -22,9 +23,10 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <article class="mx-auto max-w-3xl px-4 py-12">
-    <header class="space-y-4">
-      <a href="/blog" class="link link-hover text-sm text-base-content/60">← All posts</a>
+  <Container class="py-12 sm:py-16 lg:py-24">
+    <article class="max-w-3xl">
+      <header class="space-y-4">
+        <a href="/blog" class="link link-hover text-sm text-base-content/60">← All posts</a>
 
       <!--
         heroImage is optional. Astro's <Image /> component optimizes the image
@@ -43,30 +45,31 @@ const { Content } = await render(post);
         />
       )}
 
-      <div class="space-y-2">
-        <h1 class="text-4xl font-bold tracking-tight">{post.data.title}</h1>
-        <p class="text-sm text-base-content/60">
-        <time datetime={post.data.pubDate.toISOString()}>
-          {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
-        </time>
-        {post.data.updatedDate && (
-          <span>
-            · Updated <time datetime={post.data.updatedDate.toISOString()}>
-              {post.data.updatedDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
+        <div class="space-y-2">
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">{post.data.title}</h1>
+          <p class="text-sm text-base-content/60">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
-          </span>
-        )}
-        </p>
-      </div>
-    </header>
+            {post.data.updatedDate && (
+              <span>
+                · Updated <time datetime={post.data.updatedDate.toISOString()}>
+                  {post.data.updatedDate.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </span>
+            )}
+          </p>
+        </div>
+      </header>
 
     <!--
       daisyUI recommends using Tailwind utilities for layout and the Typography
       plugin for rich text. `prose` gives Markdown content predictable defaults
       without maintaining a custom article stylesheet in the starter.
     -->
-    <div class="prose prose-neutral mt-10 max-w-none prose-a:link prose-img:rounded-box">
-      <Content />
-    </div>
-  </article>
+      <div class="prose prose-neutral mt-10 max-w-none prose-a:link prose-img:rounded-box">
+        <Content />
+      </div>
+    </article>
+  </Container>
 </Layout>

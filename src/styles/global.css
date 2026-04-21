@@ -3,8 +3,13 @@
 @import "./theme.css";
 
 @layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
     html {
         scroll-behavior: smooth;
+        scrollbar-gutter: stable;
     }
 
     /* Respect the OS "reduce motion" setting.

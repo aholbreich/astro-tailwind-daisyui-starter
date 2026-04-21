@@ -40,7 +40,7 @@ run("pnpm check");
 run("pnpm build");
 
 await confirmRelease(currentVersion, nextVersion, releaseType);
-run(`pnpm version ${releaseType}`);
+runVersion(releaseType);
 
 console.log(`
 Release created locally.
@@ -53,6 +53,25 @@ That tag push will trigger the GitHub release workflow.
 
 function run(command) {
   execSync(command, { cwd: root, stdio: "inherit" });
+}
+
+function runVersion(type) {
+  // `pnpm run` injects npm_config_* variables into child processes.
+  // Some of those keys are pnpm-specific and trigger noisy npm warnings when
+  // `pnpm version` delegates to npm internals. Strip them for the version step.
+  const cleanEnv = Object.fromEntries(
+    Object.entries(process.env).filter(([key]) => {
+      if (key.startsWith("npm_config_")) return false;
+      if (key.startsWith("NPM_CONFIG_")) return false;
+      return true;
+    }),
+  );
+
+  execSync(`pnpm version ${type}`, {
+    cwd: root,
+    env: cleanEnv,
+    stdio: "inherit",
+  });
 }
 
 function capture(command) {
